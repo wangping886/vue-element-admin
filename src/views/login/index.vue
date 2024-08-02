@@ -1,13 +1,7 @@
 <template>
   <div class="login-container">
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      autocomplete="on"
-      label-position="left"
-    >
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on"
+      label-position="left">
       <div style="align-items: center;">
         <div id="login_container" />
       </div>
@@ -19,15 +13,8 @@
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
-          autocomplete="on"
-        />
+        <el-input ref="username" v-model="loginForm.username" placeholder="Username" name="username" type="text"
+          tabindex="1" autocomplete="on" />
       </el-form-item>
 
       <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
@@ -35,31 +22,17 @@
           <span class="svg-container">
             <svg-icon icon-class="password" />
           </span>
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            placeholder="Password"
-            name="password"
-            tabindex="2"
-            autocomplete="on"
-            @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
-          />
+          <el-input :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
+            placeholder="Password" name="password" tabindex="2" autocomplete="on" @keyup.native="checkCapslock"
+            @blur="capsTooltip = false" @keyup.enter.native="handleLogin" />
           <span class="show-pwd" @click="showPwd">
             <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
         </el-form-item>
       </el-tooltip>
 
-      <el-button
-        :loading="loading"
-        type="primary"
-        style="width:100%;margin-bottom:30px;"
-        @click.native.prevent="handleLogin"
-      >Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;"
+        @click.native.prevent="handleLogin">Login</el-button>
 
       <div style="position:relative">
         <div class="tips">
@@ -128,7 +101,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         const query = route.query
         if (query) {
           this.redirect = query.redirect
@@ -148,7 +121,7 @@ export default {
       this.$refs.password.focus()
     }
 
-    const redirectUri = encodeURIComponent('https://520tools.com/login')
+    const redirectUri = encodeURIComponent('https://520tools.com/#/login')
 
     // 在此使用 WxLogin
     new WxLogin({
