@@ -49,6 +49,7 @@ const actions = {
             console.log('login2', code)
             code = 'admin'
             wxlogin({ code }).then(response => {
+                console.log('auth res', response, 'code', code)
                 const { data } = response
                 commit('SET_TOKEN', data.token)
                 setToken(data.token)

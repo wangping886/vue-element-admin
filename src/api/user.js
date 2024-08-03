@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function wxlogin(data) {
     return request({
-        url: '/vue-element-admin/user/wxlogin',
+        url: 'https://restore.ai-age.cn/auth/wxmini',
         method: 'post',
         data
     })
