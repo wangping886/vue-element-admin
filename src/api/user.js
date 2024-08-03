@@ -4,6 +4,9 @@ export function wxlogin(data) {
     return request({
         url: 'https://restore.ai-age.cn/auth/wxmini',
         method: 'post',
+        headers: {
+            'appId': 21
+        },
         data
     })
 }
