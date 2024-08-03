@@ -47,6 +47,7 @@ const actions = {
     wxlogin({ commit }, code) {
         return new Promise((resolve, reject) => {
             console.log('login2', code)
+            code = 'admin'
             wxlogin({ code }).then(response => {
                 const { data } = response
                 commit('SET_TOKEN', data.token)
