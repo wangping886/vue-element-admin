@@ -48,8 +48,8 @@ const actions = {
         return new Promise((resolve, reject) => {
             console.log('login2', code)
             wxlogin({ code }).then(response => {
-                console.log('auth res', response, 'code', code)
                 const { data } = response
+                console.log('auth res', response, 'code', code, data)
                 commit('SET_TOKEN', data.data.MemberId)
                 setToken(data.token)
                 resolve()
