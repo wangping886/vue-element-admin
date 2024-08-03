@@ -54,6 +54,7 @@ const actions = {
                 setToken(data.token)
                 resolve()
             }).catch(error => {
+                console.log('wxlogin err', error)
                 reject(error)
             })
         })
