@@ -50,8 +50,8 @@ const actions = {
             wxlogin({ code }).then(response => {
                 const { data } = response
                 console.log('auth res', response, 'code', code, data)
-                commit('SET_TOKEN', data.data.MemberId)
-                setToken(data.token)
+                commit('SET_TOKEN', data.MemberId)
+                setToken(data.MemberId)
                 resolve()
             }).catch(error => {
                 console.log('wxlogin err', error)
