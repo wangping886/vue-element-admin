@@ -106,6 +106,15 @@ export default {
         if (query) {
           this.redirect = query.redirect
           this.otherQuery = this.getOtherQuery(query)
+          console.log('otherQuery', this.otherQuery)
+        }
+
+        // 如果未登录且包含微信code调用后端微信登录接口
+        const code = this.$route.query.code
+        console.log('wxredirect', code)
+        if (code !== '' && code !== undefined && code !== null) {
+          // todo 服务端
+          this.handleWxLogin(code)
         }
       },
       immediate: true
@@ -113,8 +122,13 @@ export default {
   },
   created() {
     // window.addEventListener('storage', this.afterQRScan)
+    console.log('created')
+
   },
   mounted() {
+    console.log('mounted')
+
+
     if (this.loginForm.username === '') {
       this.$refs.username.focus()
     } else if (this.loginForm.password === '') {
@@ -134,14 +148,9 @@ export default {
       state: 'test',
       style: 'white'
     })
-    // 如果未登录且包含微信code调用后端微信登录接口
 
-    const code = this.$route.query
-    console.log('wxredirect', code)
-    if (code != '') {
-      // todo 服务端
-    }
   },
+
   destroyed() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
@@ -164,7 +173,9 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('user/login', this.loginForm)
+          console.log('login in')
+          //this.$store.dispatch('user/login', this.loginForm)
+          this.$store.dispatch('user/wxlogin', 'admin')
             .then(() => {
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
               this.loading = false
@@ -177,6 +188,17 @@ export default {
           return false
         }
       })
+    },
+    handleWxLogin(code) {
+      this.loading = true
+      this.$store.dispatch('user/wxlogin', code)
+        .then(() => {
+          this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+          this.loading = false
+        })
+        .catch(() => {
+          this.loading = false
+        })
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
