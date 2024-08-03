@@ -41,9 +41,7 @@ module.exports = [
 
             return {
                 code: 20000,
-                data: {
-                    MemberId: token
-                }
+                data: token
             }
         }
     },
@@ -52,6 +50,7 @@ module.exports = [
         type: 'post',
         response: config => {
             const { code } = config.body
+            console.log(config)
             const token = tokens[code]
 
             // mock error
@@ -64,7 +63,9 @@ module.exports = [
 
             return {
                 code: 20000,
-                data: token
+                data: {
+                    MemberId: token.token
+                }
             }
         }
     },

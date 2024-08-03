@@ -2,7 +2,8 @@ import request from '@/utils/request'
 
 export function wxlogin(data) {
     return request({
-        url: 'https://restore.ai-age.cn/auth/wxmini',
+        //url: 'https://restore.ai-age.cn/auth/wxmini',
+        url: 'vue-element-admin/user/wxlogin',
         method: 'post',
         headers: {
             'appId': 21
