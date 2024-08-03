@@ -41,7 +41,9 @@ module.exports = [
 
             return {
                 code: 20000,
-                data: token
+                data: {
+                    MemberId: token
+                }
             }
         }
     },
