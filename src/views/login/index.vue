@@ -174,8 +174,7 @@ export default {
         if (valid) {
           this.loading = true
           console.log('login in')
-          //this.$store.dispatch('user/login', this.loginForm)
-          this.$store.dispatch('user/wxlogin', 'admin')
+          this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
               this.loading = false
