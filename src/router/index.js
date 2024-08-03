@@ -104,7 +104,7 @@ export const constantRoutes = [{
             component: () =>
                 import ('@/views/guide/index'),
             name: 'Guide',
-            meta: { title: 'Guide', icon: 'guide', noCache: true }
+            meta: { title: 'Guide2', icon: 'guide', noCache: true }
         }]
     },
     {
