@@ -181,6 +181,17 @@ export const asyncRoutes = [{
             meta: { title: 'Icons', icon: 'icon', noCache: true }
         }]
     },
+    {
+        path: '/restore',
+        component: Layout,
+        children: [{
+            path: 'index',
+            component: () =>
+                import ('@/views/restore-pic/restore'),
+            name: 'Restore',
+            meta: { title: '照片修复', icon: 'star', noCache: true }
+        }]
+    },
 
     /** when your routing map is too long, you can split it into small modules **/
     componentsRouter,
