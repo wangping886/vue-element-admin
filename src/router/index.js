@@ -189,7 +189,7 @@ export const asyncRoutes = [{
             component: () =>
                 import ('@/views/restore-pic/restore'),
             name: 'Restore',
-            meta: { title: '照片修复', icon: 'star', noCache: true }
+            meta: { title: '通用修复', icon: 'star', noCache: true }
         }]
     },
 
