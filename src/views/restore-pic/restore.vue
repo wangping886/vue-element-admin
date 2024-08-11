@@ -97,7 +97,10 @@ export default {
                         const { data } = response;
                         if (response.code === 50004) {
                             console.log('not enough', 11)
-                            this.showPay = true
+                            this.showPay = false; // 临时设置为 false
+                            this.$nextTick(() => {
+                                this.showPay = true; // 重新设置为 true
+                            });
                             return
                         }
                         this.restoredUrl = data.restored_oss;
