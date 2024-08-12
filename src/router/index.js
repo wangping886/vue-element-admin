@@ -60,51 +60,68 @@ export const constantRoutes = [{
             import ('@/views/login/auth-redirect'),
         hidden: true
     },
-    {
-        path: '/404',
-        component: () =>
-            import ('@/views/error-page/404'),
-        hidden: true
-    },
-    {
-        path: '/401',
-        component: () =>
-            import ('@/views/error-page/401'),
-        hidden: true
-    },
+    // {
+    //     path: '/404',
+    //     component: () =>
+    //         import ('@/views/error-page/404'),
+    //     hidden: true
+    // },
+    // {
+    //     path: '/401',
+    //     component: () =>
+    //         import ('@/views/error-page/401'),
+    //     hidden: true
+    // },
+    // {
+    //     path: '/',
+    //     component: Layout,
+    //     redirect: '/dashboard',
+    //     children: [{
+    //         path: 'dashboard',
+    //         component: () =>
+    //             import ('@/views/dashboard/index'),
+    //         name: 'Dashboard',
+    //         meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+    //     }]
+    // },
+
     {
         path: '/',
         component: Layout,
-        redirect: '/dashboard',
-        children: [{
-            path: 'dashboard',
-            component: () =>
-                import ('@/views/dashboard/index'),
-            name: 'Dashboard',
-            meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-        }]
+        redirect: '/restore/index',
     },
+    // {
+    //     path: '/guide',
+    //     component: Layout,
+    //     redirect: '/guide/index',
+    //     children: [{
+    //         path: 'index',
+    //         component: () =>
+    //             import ('@/views/guide/index'),
+    //         name: 'Guide',
+    //         meta: { title: 'Guide2', icon: 'guide', noCache: true }
+    //     }]
+    // },
     {
-        path: '/documentation',
+        path: '/restore',
         component: Layout,
         children: [{
             path: 'index',
             component: () =>
-                import ('@/views/documentation/index'),
-            name: 'Documentation',
-            meta: { title: 'Documentation', icon: 'documentation', affix: true }
+                import ('@/views/restore-pic/restore'),
+            name: 'Restore',
+            meta: { title: '通用修复', icon: 'star', noCache: true }
         }]
     },
     {
-        path: '/guide',
+        path: '/anime',
         component: Layout,
-        redirect: '/guide/index',
         children: [{
             path: 'index',
             component: () =>
-                import ('@/views/guide/index'),
-            name: 'Guide',
-            meta: { title: 'Guide2', icon: 'guide', noCache: true }
+                import ('@/views/restore-anime/restore-anime'),
+            name: 'RestoreAnime',
+            meta: { title: '动漫修复', icon: 'star', noCache: true }
         }]
     },
     {
@@ -126,7 +143,7 @@ export const constantRoutes = [{
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
-export const asyncRoutes = [{
+export const asyncRoutes2 = [{
         path: '/permission',
         component: Layout,
         redirect: '/permission/page',

@@ -8,7 +8,7 @@ import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
+const whiteList = ['/login', '/auth-redirect', '/restore/index'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
     // start progress bar
@@ -17,7 +17,14 @@ router.beforeEach(async(to, from, next) => {
     // set page title
     document.title = getPageTitle(to.meta.title)
 
-    // determine whether the user has logged in
+    const { roles } = { 'roles': ['admin'] }
+
+    // generate accessible routes map based on roles
+    const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+
+    // dynamically add accessible routes
+    router.addRoutes(accessRoutes)
+        // determine whether the user has logged in
     const hasToken = getToken()
     console.log(1, 'from', from.path, 'to', to.path)
     if (hasToken) {

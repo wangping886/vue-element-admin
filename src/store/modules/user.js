@@ -69,7 +69,12 @@ const actions = {
                     reject('Verification failed, please Login again.')
                 }
 
-                const { roles, name, avatar, introduction } = data
+                const { roles, name, avatar, introduction } = {
+                    roles: ['admin'],
+                    introduction: 'I am a super administrator',
+                    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+                    name: '元气向阳花2'
+                }
 
                 // roles must be a non-empty array
                 if (!roles || roles.length <= 0) {

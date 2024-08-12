@@ -68,15 +68,20 @@ service.interceptors.response.use(
             // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
             if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
                 // to re-login
-                MessageBox.confirm('登录即可使用', {
-                    confirmButtonText: '去登录',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
+                // MessageBox.confirm('登录即可使用', {
+                //     confirmButtonText: '去登录',
+                //     cancelButtonText: '取消',
+                //     type: 'warning'
+                // }).then(() => {
+                setTimeout(function() {
                     store.dispatch('user/resetToken').then(() => {
                         location.reload()
                     })
-                })
+                }, 2500);
+
+                // })
+
+
             }
             return res
         } else {

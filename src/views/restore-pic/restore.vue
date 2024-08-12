@@ -8,7 +8,7 @@
             <el-button :loading="loading" type="primary" style="margin:auto;">Login</el-button>
             <el-button :loading="loading" type="primary" style="margin:auto;">Login</el-button>
         </div>-->
-        <el-row :gutter="12">
+        <el-row :gutter="20">
             <el-col :span="6">
                 <div style="display: flex; flex-direction: column; 
                 align-items: center;justify-content: center; height: 76vh;">

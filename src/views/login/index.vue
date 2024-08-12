@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on"
       label-position="left">
       <div style="align-items: center;">
-        <div id="login_container" />
+        <div id="wxlogin_container" />
       </div>
       <div class="title-container">
         <h3 class="title">Login Form</h3>
@@ -141,7 +141,7 @@ export default {
     new WxLogin({
       // true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false
       self_redirect: false,
-      id: 'login_container',
+      id: 'wxlogin_container',
       appid: 'wx3facdb4e6cb04ef8',
       scope: 'snsapi_login',
       redirect_uri: redirectUri,
