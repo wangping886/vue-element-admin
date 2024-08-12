@@ -36,6 +36,7 @@ router.beforeEach(async(to, from, next) => {
             // determine whether the user has obtained his permission roles through getInfo
             const hasRoles = store.getters.roles && store.getters.roles.length > 0
             if (hasRoles) {
+                console.log('hasrole')
                 next()
             } else {
                 try {
@@ -48,6 +49,7 @@ router.beforeEach(async(to, from, next) => {
 
                     // dynamically add accessible routes
                     router.addRoutes(accessRoutes)
+                    console.log('get role', to.path)
 
                     // hack method to ensure that addRoutes is complete
                     // set the replace: true, so the navigation will not leave a history record
