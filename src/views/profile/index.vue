@@ -41,7 +41,6 @@
     </el-row>
     <QrCode :text="qrText" /> -->
 
-    <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
     <el-dialog title="可用次数不足，请充值" :visible.sync="dialogFormVisible">
 

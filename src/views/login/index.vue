@@ -5,7 +5,7 @@
       <div style="align-items: center;">
         <div id="wxlogin_container" />
       </div>
-      <div class="title-container">
+      <!-- <div class="title-container">
         <h3 class="title">Login Form</h3>
       </div>
 
@@ -47,7 +47,7 @@
         <el-button class="thirdparty-button" type="primary" @click="showDialog = true">
           Or connect with
         </el-button>
-      </div>
+      </div> -->
     </el-form>
 
     <el-dialog title="Or connect with" :visible.sync="showDialog">
