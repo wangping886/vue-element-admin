@@ -190,6 +190,7 @@ export default {
     },
     handleWxLogin(code) {
       this.loading = true
+      console.log('wx callback', 'code', code, 'redirect', this.redirect)
       this.$store.dispatch('user/wxlogin', code)
         .then(() => {
           this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
