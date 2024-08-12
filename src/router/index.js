@@ -87,7 +87,6 @@ export const constantRoutes = [{
 
     {
         path: '/',
-        component: Layout,
         redirect: '/restore/index',
     },
     // {
@@ -105,6 +104,7 @@ export const constantRoutes = [{
     {
         path: '/restore',
         component: Layout,
+        redirect: '/restore/index',
         children: [{
             path: 'index',
             component: () =>
@@ -116,6 +116,7 @@ export const constantRoutes = [{
     {
         path: '/anime',
         component: Layout,
+        redirect: '/anime/index',
         children: [{
             path: 'index',
             component: () =>
@@ -424,7 +425,6 @@ const router = createRouter()
 export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher // reset router
-    router.addRoutes(constantRoutes) //初始化
 }
 
 export default router
