@@ -424,6 +424,7 @@ const router = createRouter()
 export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher // reset router
+    router.addRoutes(constantRoutes) //初始化
 }
 
 export default router

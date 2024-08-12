@@ -15,16 +15,16 @@ router.beforeEach(async(to, from, next) => {
     NProgress.start()
 
     // set page title
-    document.title = getPageTitle(to.meta.title)
+    // document.title = getPageTitle(to.meta.title)
 
-    const { roles } = { 'roles': ['admin'] }
+    // const { roles } = { 'roles': ['admin'] }
 
-    // generate accessible routes map based on roles
-    const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+    // // generate accessible routes map based on roles
+    // const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
     // dynamically add accessible routes
-    router.addRoutes(accessRoutes)
-        // determine whether the user has logged in
+    //router.addRoutes(accessRoutes)
+    // determine whether the user has logged in
     const hasToken = getToken()
     if (hasToken) {
         console.log(1, 'from', from.path, 'to', to.path)
@@ -66,12 +66,14 @@ router.beforeEach(async(to, from, next) => {
         }
     } else {
         /* has no token*/
-        console.log(2, 'from', from.path, 'to', to.path)
+        console.log(2, 'from', from.path, 'to', to.path, whiteList.indexOf(to.path))
 
         if (whiteList.indexOf(to.path) !== -1) {
             // in the free login whitelist, go directly
             console.log('before router login')
+
             next()
+
             NProgress.done()
 
         } else {
