@@ -67,10 +67,15 @@ const actions = {
             let data = {
                 roles: ['admin'],
                 introduction: '',
-                avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-                name: '元气向阳花'
+                avatar: '',
+                name: ''
             }
 
+            if (getToken() !== null && getToken() !== undefined && getToken() !== '') {
+                console.log('userinfo gettoken', getToken())
+                data.name = '元气向阳花'
+                data.avatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
+            }
             // roles must be a non-empty array
             if (!data.roles || data.roles.length <= 0) {
                 reject('getInfo: roles must be a non-null array!')
