@@ -75,9 +75,9 @@ service.interceptors.response.use(
                 // }).then(() => {
                 setTimeout(function() {
                     store.dispatch('user/resetToken').then(() => {
-                        location.reload()
+                        location.href = '/#/login'
                     })
-                }, 2500);
+                }, 1500);
 
                 // })
 
