@@ -9,9 +9,9 @@
             <el-button :loading="loading" type="primary" style="margin:auto;">Login</el-button>
         </div>-->
         <el-row :gutter="20">
-            <el-col :span="6">
+            <el-col :span="7">
                 <div style="display: flex; flex-direction: column; 
-                align-items: center;justify-content: center; height: 76vh;">
+                align-items: center;justify-content: center; height: 76vh;margin-left: 18px;">
                     <el-upload class="upload-demo" drag :on-change="imgRestore" action="" :auto-upload="false"
                         :show-file-list="false" style="height: 32vh; margin-top: 5vh;">
                         <i class="el-icon-upload"></i>
@@ -121,6 +121,7 @@ export default {
             reader.readAsDataURL(file.raw);
         },
         async downloadImage() {
+            console.log('env', process.env.VUE_APP_ENV, process.env.VUE_APP_BASE_API)
             console.log("print state", this.showLogo);
             console.log("apiSetting", this.$store.state.settings.apiSetting);
             console.log("apiSetting", this.apiSetting);
