@@ -30,7 +30,13 @@
             </el-col>
 
             <el-col :span="14">
-                <div style="display: flex; flex-direction: column; align-items: center">
+                <div v-loading="isLoading" element-loading-text="照片修复中" element-loading-spinner="el-icon-loading"
+                    element-loading-background="rgba(128,128,128,0.4)"
+                    style="display: flex; flex-direction: column; align-items: center">
+                    <el-progress v-if="isLoading" text-color="rgb(30,144,255)" type="circle" :percentage="progress"
+                        style="position: absolute; top: 30%; left: 50%; 
+                        transform: translate(-50%, -50%); z-index: 10;">
+                        ></el-progress>
                     <el-image class="img-show" style="width: 100%; height: 76vh" :src="restoredUrl"
                         :preview-src-list="srcList" :fit="fit"></el-image>
                     <el-button style="margin-top: 15px" @click="downloadImage()" type="primary">图片保存</el-button>
@@ -44,6 +50,8 @@
         <!-- <el-row>
             <el-button @click="downloadImage()" type="primary">图片保存</el-button>
         </el-row> -->
+        <el-button @click="showLoading">显示加载</el-button>
+
 
         <Paygoods :dialogParamVisible="showPay" :goodsType="goodsType"></Paygoods>
     </div>
@@ -61,6 +69,8 @@ export default {
     data() {
         return {
             showPay: false, //根据有无可用次数修改
+            isLoading: false,
+            progress: 0,
             goodsType: "4",
             fit: "contain",
             url: "https://cdn.ai-age.cn/setting_media/common0.jpeg?x-oss-process=image/quality,60",
@@ -83,6 +93,7 @@ export default {
     methods: {
         imgRestore(file, fileList) {
             const reader = new FileReader();
+            this.showLoading()
             reader.onload = (e) => {
                 this.url = e.target.result;
                 console.log("file result", this.url);
@@ -94,6 +105,7 @@ export default {
                 let url;
                 restoreImg(req)
                     .then((response) => {
+                        this.isLoading = false
                         const { data } = response;
                         if (response.code === 50004) {
                             console.log('not enough', 11)
@@ -140,6 +152,29 @@ export default {
                 console.error("下载图片失败", error);
             }
         },
+        showLoading() {
+            this.isLoading = true;
+            this.progress = 5;
+            this.simulateProgress();
+        },
+        simulateProgress() {
+            if (this.progress < 100) {
+                console.log('progress', this.progress)
+                if (this.progress < 60) {
+                    setTimeout(() => {
+                        this.progress += 15;
+                        this.simulateProgress();
+                    }, 1500);
+                } else {
+                    setTimeout(() => {
+                        this.progress += 2;
+                        this.simulateProgress();
+                    }, 2000);
+                }
+            } else {
+                this.isLoading = false;
+            }
+        }
     },
 };
 </script>
