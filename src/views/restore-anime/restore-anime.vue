@@ -21,8 +21,8 @@
                     </el-upload>
 
                     <div width="100%" style="height: 2vh ;margin-bottom: 2vh;">
-                        <el-radio v-model="radio" label="1">高清修复</el-radio>
-                        <el-radio v-model="radio" label="2">超清修复</el-radio>
+                        <el-radio v-model="radio" label="2">高清修复</el-radio>
+                        <el-radio v-model="radio" label="6">超清修复</el-radio>
                     </div>
                     <el-image v-if="url" class="img-show" style="width: 100%; height: 46vh" :src="url"
                         :fit="fit"></el-image>
@@ -73,7 +73,7 @@ export default {
             fit: "contain",
             url: "https://cdn.ai-age.cn/setting_media/anime0.jpeg?x-oss-process=image/quality,60",
             restoredUrl: "https://cdn.ai-age.cn/setting_media/anime1.jpeg",
-            radio: "1",
+            radio: "2",
             srcList: [
                 "https://cdn.ai-age.cn/setting_media/anime0.jpeg?x-oss-process=image/quality,60",
                 "https://cdn.ai-age.cn/setting_media/anime1.jpeg",
@@ -97,7 +97,7 @@ export default {
                 console.log("file result", this.url);
 
                 let req = {
-                    model_type: 1,
+                    model_type: parseInt(this.radio),
                     img_data: this.url.split(",")[1],
                 };
                 let url;
