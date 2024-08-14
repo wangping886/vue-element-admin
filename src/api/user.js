@@ -1,7 +1,7 @@
 import { getHeaders } from '@/utils/auth'
 import request from '@/utils/request'
 export function getHost() {
-    return 'https://restore.ai-age.cn'
+    return 'https://api.520tools.com'
 }
 export function wxlogin(data) {
     return request({
