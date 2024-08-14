@@ -24,7 +24,7 @@ export function restoreImg(data) {
         //https://localhost/#/login?code=admin
         method: 'post',
         headers: getHeaders(),
-        timeout: 9000,
+        timeout: 65000,
         data
     })
 }
