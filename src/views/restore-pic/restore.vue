@@ -50,7 +50,6 @@
         <!-- <el-row>
             <el-button @click="downloadImage()" type="primary">图片保存</el-button>
         </el-row> -->
-        <el-button @click="showLoading">显示加载</el-button>
 
 
         <Paygoods :dialogParamVisible="showPay" :goodsType="goodsType"></Paygoods>
