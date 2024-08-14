@@ -103,7 +103,7 @@ export default {
                 let url;
                 restoreImg(req)
                     .then((response) => {
-                        this.isLoading = false
+                        this.hideLoading()
                         const { data } = response;
                         if (response.code === 50004) {
                             console.log('not enough', 11)
@@ -154,8 +154,12 @@ export default {
             this.progress = 5;
             this.simulateProgress();
         },
+        hideLoading() {
+            this.isLoading = true;
+            this.progress = 0;
+        },
         simulateProgress() {
-            if (this.progress < 100) {
+            if (this.progress < 100 && this.isLoading) {
                 console.log('progress', this.progress)
                 if (this.progress < 60) {
                     setTimeout(() => {
