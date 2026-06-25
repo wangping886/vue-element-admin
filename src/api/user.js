@@ -1,7 +1,7 @@
 import { getHeaders } from '@/utils/auth'
 import request from '@/utils/request'
 export function getHost() {
-    return 'https://api.520tools.com'
+    return process.env.VUE_APP_API_HOST
 }
 export function wxlogin(data) {
     return request({

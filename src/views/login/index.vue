@@ -135,7 +135,7 @@ export default {
       this.$refs.password.focus()
     }
 
-    const redirectUri = encodeURIComponent('https://520tools.com/#/login')
+    const redirectUri = encodeURIComponent(`${process.env.VUE_APP_REDIRECT_HOST}/#/login`)
 
     // 在此使用 WxLogin
     new WxLogin({
